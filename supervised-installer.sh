@@ -102,16 +102,16 @@ if [ ! -f "$FILE_NM_CONNECTION" ]; then
     curl -sL "${URL_NM_CONNECTION}" > "${FILE_NM_CONNECTION}"
 fi
 
-warn "Changes are needed to the /etc/network/interfaces file"
-info "If you have modified the network on the host manualy, those can now be overwritten"
-info "If you do not overwrite this now you need to manually adjust it later"
-info "Do you want to proceed with that? [N/y] "
-read answer
+#warn "Changes are needed to the /etc/network/interfaces file"
+#info "If you have modified the network on the host manualy, those can now be overwritten"
+#info "If you do not overwrite this now you need to manually adjust it later"
+#info "Do you want to proceed with that? [N/y] "
+#read answer
 
-if [[ "$answer" =~ "y" ]] || [[ "$answer" =~ "Y" ]]; then
-    info "Replacing /etc/network/interfaces"
-    curl -sL "${URL_INTERFACES}" > "${FILE_INTERFACES}";
-fi
+#if [[ "$answer" =~ "y" ]] || [[ "$answer" =~ "Y" ]]; then
+#    info "Replacing /etc/network/interfaces"
+#    curl -sL "${URL_INTERFACES}" > "${FILE_INTERFACES}";
+#fi
 
 info "Restarting NetworkManager"
 systemctl restart "${SERVICE_NM}"
@@ -233,7 +233,12 @@ sed -i -e "s,%%BINARY_DOCKER%%,${BINARY_DOCKER},g" \
        "${SYSCONFDIR}/systemd/system/hassio-supervisor.service"
 
 chmod a+x "${PREFIX}/sbin/hassio-supervisor"
+
+echo $PREFIX
+
 systemctl enable hassio-supervisor.service > /dev/null 2>&1;
+
+ping blog.janono.pl
 
 #
 # Install Hass.io AppArmor
