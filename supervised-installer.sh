@@ -97,6 +97,12 @@ fi
 
 # Create config for NetworkManager
 info "Creating NetworkManager configuration"
+echo $URL_NM_CONF
+echo $FILE_NM_CONF
+echo $FILE_NM_CONNECTION
+echo $URL_NM_CONNECTION
+
+
 curl -sL "${URL_NM_CONF}" > "${FILE_NM_CONF}"
 if [ ! -f "$FILE_NM_CONNECTION" ]; then
     curl -sL "${URL_NM_CONNECTION}" > "${FILE_NM_CONNECTION}"
@@ -113,8 +119,8 @@ fi
 #    curl -sL "${URL_INTERFACES}" > "${FILE_INTERFACES}";
 #fi
 
-info "Restarting NetworkManager"
-systemctl restart "${SERVICE_NM}"
+#info "Restarting NetworkManager"
+#systemctl restart "${SERVICE_NM}"
 
 # Parse command line parameters
 while [[ $# -gt 0 ]]; do
