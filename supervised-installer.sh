@@ -220,6 +220,8 @@ docker tag "$HASSIO_DOCKER:$HASSIO_VERSION" "$HASSIO_DOCKER:stable" > /dev/null
 info "Install supervisor startup scripts"
 echo $URL_BIN_HASSIO
 echo $URL_SERVICE_HASSIO
+echo $BINARY_DOCKER
+echo $SYSCONFDIR
 
 curl -sL ${URL_BIN_HASSIO} > "${PREFIX}/sbin/hassio-supervisor"
 curl -sL ${URL_SERVICE_HASSIO} > "${SYSCONFDIR}/systemd/system/hassio-supervisor.service"
@@ -236,6 +238,16 @@ systemctl enable hassio-supervisor.service > /dev/null 2>&1;
 #
 # Install Hass.io AppArmor
 info "Install AppArmor scripts"
+echo $DATA_SHARE
+echo $URL_BIN_APPARMOR
+echo $URL_APPARMOR_PROFILE
+echo $SYSCONFDIR
+echo $DATA_SHARE
+echo $PREFIX
+echo $CONFIG
+echo $URL_HA
+
+
 mkdir -p "${DATA_SHARE}/apparmor"
 curl -sL ${URL_BIN_APPARMOR} > "${PREFIX}/sbin/hassio-apparmor"
 curl -sL ${URL_SERVICE_APPARMOR} > "${SYSCONFDIR}/systemd/system/hassio-apparmor.service"
