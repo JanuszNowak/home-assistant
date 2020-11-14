@@ -103,10 +103,10 @@ echo $FILE_NM_CONNECTION
 echo $URL_NM_CONNECTION
 
 
-curl -sL "${URL_NM_CONF}" > "${FILE_NM_CONF}"
-if [ ! -f "$FILE_NM_CONNECTION" ]; then
-    curl -sL "${URL_NM_CONNECTION}" > "${FILE_NM_CONNECTION}"
-fi
+#curl -sL "${URL_NM_CONF}" > "${FILE_NM_CONF}"
+#if [ ! -f "$FILE_NM_CONNECTION" ]; then
+#    curl -sL "${URL_NM_CONNECTION}" > "${FILE_NM_CONNECTION}"
+#fi
 
 #warn "Changes are needed to the /etc/network/interfaces file"
 #info "If you have modified the network on the host manualy, those can now be overwritten"
